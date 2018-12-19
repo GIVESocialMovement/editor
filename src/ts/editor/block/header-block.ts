@@ -24,8 +24,16 @@ export class HeaderBlock extends Block {
 
   constructor(public editor: Editor, public content: string) {
     super(editor);
-    this.elem.classList.add('editor-block__text');
+    this.elem.classList.add('editor-block', 'editor-block__text');
     this.elem.appendChild(this.textarea);
+
+    this.textarea.classList.add('editor-block__editor', 'editor-block__header');
+    this.textarea.setAttribute('rows', '1');
+    this.textarea.addEventListener('input', function() {
+      if (this.textarea.scrollHeight > this.textarea.clientHeight) {
+        this.textarea.style.height = this.textarea.scrollHeight + "px";
+      }
+    }.bind(this));
 
     this.textarea.innerHTML = this.content;
   }
