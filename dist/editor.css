@@ -18,6 +18,9 @@
   .editor-block__header {
     font-size: 20px;
     font-weight: 600; }
+  .editor-block__body {
+    font-size: 16px;
+    font-weight: 400; }
 
 .test {
   display: none; }
