@@ -21,6 +21,12 @@
   .editor-block__body {
     font-size: 16px;
     font-weight: 400; }
+  .editor-block__quote {
+    border-left: solid 2px #eeeeee;
+    color: #666666;
+    font-size: 30px;
+    font-weight: 300;
+    padding-left: 20px; }
 
 .test {
   display: none; }
