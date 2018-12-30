@@ -69,7 +69,16 @@ export class Editor {
       this.elem.insertBefore(block.elem, this.lastControl.elem);
     }
 
+    this.collapseAll();
     block.focus();
+    block.control.expandDashboard();
+  }
+
+  collapseAll() {
+    for (let i=0;i < this.blocks.length;i++) {
+      this.blocks[i].control.collapseDashboard();
+      this.lastControl.collapseDashboard();
+    }
   }
 
   getContent(): Array<RawBlock> {
