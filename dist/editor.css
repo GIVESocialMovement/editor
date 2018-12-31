@@ -72,6 +72,8 @@
     text-align: center; }
     .editor-block__image__upload-panel--active {
       background-color: #eeeeee; }
+    .editor-block__image__upload-panel__icon {
+      padding-bottom: 15px; }
     .editor-block__image__upload-panel__input {
       display: none; }
     .editor-block__image__upload-panel__button {

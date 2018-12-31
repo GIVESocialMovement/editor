@@ -115,6 +115,10 @@ $font-size--quote: 30px;
         background-color: $color--white-outline;
       }
 
+      &__icon {
+        padding-bottom: 15px;
+      }
+
       &__input {
         display: none;
       }
