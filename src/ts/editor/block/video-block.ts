@@ -48,8 +48,6 @@ export class VideoBlock extends Block {
 
     this.videoPanel.appendChild(this.videoElem);
     this.videoPanel.appendChild(this.videoIframe);
-    this.videoIframe.width="560";
-    this.videoIframe.height="315";
     this.videoIframe.frameBorder = "0";
 
     this.uploadPanel.appendChild(this.uploadIconContainer);
@@ -174,6 +172,12 @@ export class VideoBlock extends Block {
     return match ? match[2] : null;
   }
 
+  static extractVimeoId(url: string): string {
+    let regExp = /^.+vimeo.com\/(.*\/)?([^#\?]*)/;
+    let match = url.match(regExp);
+    return match ? match[2] || match[1] : null;
+  }
+
   updateView(): void {
     if (this.videoUrl) {
       if (this.videoUrl.includes('cloudinary')) {
@@ -182,8 +186,19 @@ export class VideoBlock extends Block {
         this.videoIframe.style.display = 'none';
         this.uploadPanel.style.display = 'none';
       } else if (this.videoUrl.includes('youtube')) {
-        let youtubeId = VideoBlock.extractYoutubeId(this.inputText.value.trim());
+        let youtubeId = VideoBlock.extractYoutubeId(this.videoUrl);
         this.videoIframe.src=`https://www.youtube.com/embed/${youtubeId}?rel=0`;
+        this.videoIframe.width="560";
+        this.videoIframe.height="315";
+
+        this.videoPanel.style.display = 'block';
+        this.videoElem.style.display = 'none';
+        this.uploadPanel.style.display = 'none';
+      } else if (this.videoUrl.includes('vimeo')) {
+        let vimeoId = VideoBlock.extractVimeoId(this.videoUrl);
+        this.videoIframe.src=`https://player.vimeo.com/video/${vimeoId}?color=ec7070&portrait=0`;
+        this.videoIframe.width="640";
+        this.videoIframe.height="240";
 
         this.videoPanel.style.display = 'block';
         this.videoElem.style.display = 'none';
