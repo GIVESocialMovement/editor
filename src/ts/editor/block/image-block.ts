@@ -143,10 +143,12 @@ export class ImageBlock extends Block {
   }
 
   startLoading(): void {
+    this.uploadLabel.style.display = 'none';
     this.loadingIcon.style.display = 'inline-block';
   }
 
   stopLoading(): void {
+    this.uploadLabel.style.display = 'inline-block';
     this.loadingIcon.style.display = 'none';
   }
 

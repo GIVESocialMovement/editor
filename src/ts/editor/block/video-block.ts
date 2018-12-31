@@ -61,15 +61,16 @@ export class VideoBlock extends Block {
     this.inputTextContainer.appendChild(this.inputTextIcon);
     this.inputTextContainer.appendChild(this.inputText);
 
-    this.uploadPanel.classList.add('editor-block__video__upload-panel')
-    this.uploadIconContainer.classList.add('editor-block__video__upload-panel__icon-container')
-    this.uploadIcon.classList.add('editor-block__video__upload-panel__icon-container__icon')
+    this.uploadPanel.classList.add('editor-block__video__upload-panel');
+    this.uploadIconContainer.classList.add('editor-block__video__upload-panel__icon-container');
+    this.uploadIcon.classList.add('editor-block__video__upload-panel__icon-container__icon');
     this.uploadButton.classList.add('editor-block__video__upload-panel__icon-container__button');
     this.inputFile.classList.add('editor-block__video__upload-panel__icon-container__input');
     this.inputTextContainer.classList.add('editor-block__video__upload-panel__input-container');
-    this.inputTextLabel.classList.add('editor-block__video__upload-panel__input-container__label')
-    this.inputTextIcon.classList.add('editor-block__video__upload-panel__input-container__icon')
-    this.inputText.classList.add('editor-block__video__upload-panel__input-container__input')
+    this.inputTextLabel.classList.add('editor-block__video__upload-panel__input-container__label');
+    this.inputTextIcon.classList.add('editor-block__video__upload-panel__input-container__icon');
+    this.inputText.classList.add('editor-block__video__upload-panel__input-container__input');
+    this.videoIframe.classList.add('js-video-iframe');
 
     this.uploadIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="53" height="42" viewBox="0 0 53 42">\n' +
       '    <defs>\n' +
