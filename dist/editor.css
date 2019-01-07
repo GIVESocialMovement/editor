@@ -57,13 +57,31 @@
   line-height: 1.5;
   padding-bottom: 10px;
   padding-top: 10px; }
-  .editor-block__editor {
-    width: 100%;
-    box-shadow: none;
-    border: 0;
-    outline: none;
-    overflow: hidden;
-    resize: none; }
+  .editor-block__container {
+    position: relative; }
+    .editor-block__container__delete-button {
+      background-color: #333333;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+      opacity: 0.5;
+      padding: 5px 6px 7px 6px;
+      position: absolute;
+      right: 15px;
+      top: -5px; }
+      .editor-block__container__delete-button:hover {
+        opacity: 0.7; }
+      .editor-block__container__delete-button__icon {
+        color: white;
+        height: 12px;
+        width: 12px; }
+    .editor-block__container__editor {
+      width: 100%;
+      box-shadow: none;
+      border: 0;
+      outline: none;
+      overflow: hidden;
+      resize: none; }
   .editor-block__image__upload-panel {
     background-color: #f4f4f4;
     border: solid 1px #eeeeee;
