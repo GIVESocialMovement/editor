@@ -49,5 +49,20 @@ export abstract class Block {
   focus(): void {
     this.editor.showDeleteButton(this);
   }
+
+  autoresizeTextarea(textarea: HTMLTextAreaElement): void {
+    textarea.addEventListener('input', function() {
+      if (textarea.scrollHeight > textarea.clientHeight && textarea.scrollHeight) {
+        textarea.style.height = textarea.scrollHeight + "px";
+      }
+    }.bind(this));
+
+    // trigger a dummy event to set the correct height of the textarea after the DOM is initialized
+    window.addEventListener("DOMContentLoaded", () => {
+      let evt = document.createEvent("Event");
+      evt.initEvent("input", true, true);
+      textarea.dispatchEvent(evt)
+    }, false);
+  }
 }
 
