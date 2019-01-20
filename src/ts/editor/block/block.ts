@@ -21,6 +21,10 @@ export abstract class Block {
     this.control = new Control(editor, this);
     this.elem.classList.add('editor-block');
     this.elem.appendChild(this.control.elem);
+    this.elem.addEventListener('click', function() {
+      this.focus();
+      this.editor.showDeleteButton(this);
+    }.bind(this));
 
     this.elem.appendChild(this.container);
     this.container.classList.add('editor-block__container');
@@ -42,6 +46,8 @@ export abstract class Block {
 
   abstract getRawContent(): RawBlock
 
-  abstract focus(): void
+  focus(): void {
+    this.editor.showDeleteButton(this);
+  }
 }
 

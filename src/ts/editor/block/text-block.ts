@@ -39,6 +39,7 @@ export class TextBlock extends Block {
   }
 
   focus(): void {
+    super.focus();
     this.textarea.focus();
   }
 
