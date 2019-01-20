@@ -28,6 +28,7 @@ export class TextBlock extends Block {
     this.elem.appendChild(this.textarea);
 
     this.textarea.classList.add('editor-block__container__editor', 'editor-block__body');
+    this.textarea.placeholder = 'Body text'
     this.textarea.innerHTML = this.content;
 
     this.autoresizeTextarea(this.textarea);
