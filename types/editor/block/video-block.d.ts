@@ -19,8 +19,8 @@ export declare class VideoBlock extends Block {
     videoElem: HTMLVideoElement;
     videoIframe: HTMLIFrameElement;
     constructor(editor: Editor, videoUrl: string);
-    static extractYoutubeId(url: string): string;
-    static extractVimeoId(url: string): string;
+    static extractYoutubeId(url: string): string | null;
+    static extractVimeoId(url: string): string | null;
     updateView(): void;
     focus(): void;
     getRawContent(): RawBlock;

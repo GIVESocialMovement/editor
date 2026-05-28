@@ -67,13 +67,13 @@ export class VideoBlock extends Block {
     this.updateView();
   }
 
-  static extractYoutubeId(url: string): string {
+  static extractYoutubeId(url: string): string | null {
     let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=|shorts\/)([^#\&\?]*).*/;
     let match = url.match(regExp);
     return match ? match[2] : null;
   }
 
-  static extractVimeoId(url: string): string {
+  static extractVimeoId(url: string): string | null {
     let regExp = /^.+vimeo.com\/(.*\/)?([^#\?]*)/;
     let match = url.match(regExp);
     return match ? match[2] || match[1] : null;
@@ -88,22 +88,30 @@ export class VideoBlock extends Block {
         this.uploadPanel.style.display = 'none';
       } else if (this.videoUrl.includes('youtube')) {
         let youtubeId = VideoBlock.extractYoutubeId(this.videoUrl);
-        this.videoIframe.src=`https://www.youtube.com/embed/${youtubeId}?rel=0`;
-        this.videoIframe.width="560";
-        this.videoIframe.height="315";
+        if (youtubeId) {
+          this.videoIframe.src=`https://www.youtube.com/embed/${youtubeId}?rel=0`;
+          this.videoIframe.width="560";
+          this.videoIframe.height="315";
 
-        this.videoPanel.style.display = 'block';
-        this.videoElem.style.display = 'none';
-        this.uploadPanel.style.display = 'none';
+          this.videoPanel.style.display = 'block';
+          this.videoElem.style.display = 'none';
+          this.uploadPanel.style.display = 'none';
+        } else {
+          console.error(`Fail to extract YouTube ID from URL: ${this.videoUrl}`);
+        }
       } else if (this.videoUrl.includes('vimeo')) {
         let vimeoId = VideoBlock.extractVimeoId(this.videoUrl);
-        this.videoIframe.src=`https://player.vimeo.com/video/${vimeoId}?color=ec7070&portrait=0`;
-        this.videoIframe.width="560";
-        this.videoIframe.height="315";
+        if (vimeoId) {
+          this.videoIframe.src=`https://player.vimeo.com/video/${vimeoId}?color=ec7070&portrait=0`;
+          this.videoIframe.width="560";
+          this.videoIframe.height="315";
 
-        this.videoPanel.style.display = 'block';
-        this.videoElem.style.display = 'none';
-        this.uploadPanel.style.display = 'none';
+          this.videoPanel.style.display = 'block';
+          this.videoElem.style.display = 'none';
+          this.uploadPanel.style.display = 'none';
+        } else {
+          console.error(`Fail to extract Vimeo ID from URL: ${this.videoUrl}`);
+        }
       }
     } else {
       this.videoPanel.style.display = 'none';
