@@ -1,2 +1,4 @@
 /.idea
+*.iml
+.python-version
 /node_modules
